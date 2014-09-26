@@ -1,31 +1,34 @@
 extends layout
 
 block head  
-	title DVM - Home Page
+	//title DVM - Home Page
+	block head2
 	link(href="./css/pagelayout.css", rel="stylesheet" , media="screen")
 
 block content  
-	h1 DVM - Document Version Manager
-	.leftp
-	
-		.leftp-1
-			block leftp-1
-			
-		.leftp-2
-			block leftp-2
+	h1#titl DVM - Document Version Manager
+	.panelslay
+		.leftp
+		
+			.leftp-1
+				button(class="btn btn-lrg btn-primary" ,type="button") +Upload
+				block leftp-1
+				
+			.leftp-2
+				block leftp-2
 
-	.rightp
+		.rightp
 
-		.rightp-titlebanner
-			block rightp-titlebanner
+			.rightp-titlebanner
+				block rightp-titlebanner
 
-		.rightp-docinfo
-			block rightp-docinfo
+			.rightp-docinfo
+				block rightp-docinfo
 
-		.rightp-tablevers
-			block rightp-tablevers
+			.rightp-table
+				block rightp-table
 
-		.rightp-down
-			block rightp-down
-			p Algunas notas extras que cuando tenga tiempo redactar'e o copiar'e de algun sitio que crea pertinente.
+			.rightp-down
+				block rightp-down
+				p Algunas notas extras que cuando tenga tiempo redactar'e o copiar'e de algun sitio que crea pertinente.
 

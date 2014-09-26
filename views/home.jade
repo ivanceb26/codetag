@@ -1,30 +1,57 @@
 extends page
 
+block head2
+	title DVM - Home
+
 block leftp-1
-			button(class="btn" ,type="button") Upload
 
 block rightp-titlebanner
 	H1 Home Page
 
 block rightp-docinfo
-	p File Name:	Title:
-block rightp-tablevers
-	table
-		thead
-			tr
-				th Id
-				th Uuid
-				th Date
-				th Size
-				th Comments
-				th cbox
-		tbody
-			//each post, i in userPosts
-			tr
-				td 1111 
-				td 1212
-				td new Date();
-				td 10kb
-				td Comentarios y otros lalala
-				td 
-					input(type = 'checkbox', name='element', id='e1', form='elements')
+	div
+block rightp-table
+	.tablehome
+		table.table.table-striped
+			thead
+				tr
+					th Id
+					th Uuid
+					th File Name
+					th Date
+					th Version
+					th
+					th
+			tbody
+				//each post, i in userPosts
+				tr
+					td 1111 
+					td 1212
+					td doc1.docx
+					td new Date();
+					td(align="center") 5
+					td 
+						button(class="btn btn-warning btn-versions", type="button") versions
+					td 
+						button(class="btn btn-info btn-download", type="button") download
+				tr
+					td 1111 
+					td 1212
+					td doc1.docx
+					td new Date();
+					td(align="center") 5
+					td 
+						button(class="btn btn-warning btn-versions", type="button") versions
+					td 
+						button(class="btn btn-info btn-download", type="button") download
+
+				tr
+					td 1111 
+					td 1212
+					td doc1.docx
+					td new Date();
+					td(align="center") 5
+					td 
+						button(class="btn btn-warning btn-versions", type="button") versions
+					td 
+						button(class="btn btn-info btn-download", type="button") download
