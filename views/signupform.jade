@@ -1,0 +1,20 @@
+extends layout
+
+block head  
+	title DVM - Sign Up Form
+
+block content  
+	.formcontent
+		form(method='post',action='')
+			label(for='name') *Name:
+			input(type='text',name='name',id='name')      
+			label(for='email') *Email:
+			input(type='text',name='email',id='email')
+			label(for='user') *User:
+			input(type='text',name='user',id='user')      
+			label(for='pass') *Password:
+			input(type='password',name='pass',id='pass')
+			label(for='repass') *Re-Password:
+			input(type='password',name='repass',id='repass')
+
+			input(type='submit',name='submit',value='Submit').submit-button

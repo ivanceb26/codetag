@@ -1,4 +1,5 @@
 var express = require('express');
+var stylus = require('stylus');
 var app= express();
 // var User = require('./user.js');
 // var Document = require('./docum.js')
@@ -17,11 +18,44 @@ var app= express();
 
 //console.log("lalala \n");
 // view engine setup
+
+
 app.engine('jade', require('jade').__express);
 
+app.use(stylus.middleware({
+  src: __dirname+'/css' ,
+  dest: __dirname + '/public/css',
+  debug: true,
+  force: true
+}));
 
-app.get('/prueba', function(req, res){
+app.use(express.static(__dirname+"/public"));
+
+app.get('/versions', function(req, res){
   var fileName = "versions.jade";
+    
+  res.render(__dirname+'/views/'+fileName);
+  //res.render(fileName);
+        
+});
+
+app.get('/', function(req, res){
+  var fileName = "home.jade";
+    
+  res.render(__dirname+'/views/'+fileName);
+  //res.render(fileName);
+        
+});
+app.get('/login', function(req, res){
+  var fileName = "loginform.jade";
+    
+  res.render(__dirname+'/views/'+fileName);
+  //res.render(fileName);
+        
+});
+
+app.get('/signup', function(req, res){
+  var fileName = "signupform.jade";
     
   res.render(__dirname+'/views/'+fileName);
   //res.render(fileName);
@@ -31,7 +65,12 @@ app.get('/prueba', function(req, res){
 
 
 
-
+app.get('/bootstrap/?', function(req, res){
+  var fileName = "";
+    
+  res.sendfile(__dirname+'/bootstrap/'+fileName);
+        
+});
 
 
 

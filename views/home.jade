@@ -1,18 +1,13 @@
 extends page
 
 block leftp-1
-			button(class="btn btn-lg" ,type="button") Upload
-
-block leftp-2
-			button(class="btn", type="button") func1
-			button(class="btn", type="button") func2
-			button(class="btn", type="button") func3
+			button(class="btn" ,type="button") Upload
 
 block rightp-titlebanner
-	H1 Versions
+	H1 Home Page
 
 block rightp-docinfo
-	p File Name	Title
+	p File Name:	Title:
 block rightp-tablevers
 	table
 		thead
@@ -31,4 +26,5 @@ block rightp-tablevers
 				td new Date();
 				td 10kb
 				td Comentarios y otros lalala
-				td input(type = "checkbox")
+				td 
+					input(type = 'checkbox', name='element', id='e1', form='elements')
