@@ -85,3 +85,9 @@ h2 {
 .table tbody tr td {
   text-align: center;
 }
+.formcontentlogin .formgroup input {
+  max-width: 100px;
+}
+.formcontentlogin .formgroup {
+  margin: 10px;
+}

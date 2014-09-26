@@ -7,9 +7,10 @@ block leftp-1
 			
 
 block leftp-2
-			button(class="btn btn-success", type="button") func1
-			button(class="btn btn-success", type="button") func2
-			button(class="btn btn-success", type="button") func3
+			button(class="btn btn-success", type="button") Download
+			button(class="btn btn-success", type="button") Edit
+			button(class="btn btn-success", type="button") Delete
+			button(class="btn btn-success", type="button") Set Main
 
 block rightp-titlebanner
 	h2 Versions
@@ -37,11 +38,13 @@ block rightp-table
 					td new Date();
 					td 10kb
 					td Comentarios y otros lalala
-					td input(type = "checkbox")
+					td
+						input(type = "radio", form="tabformv", value="1", name = "rad")
 				tr
 					td 1111 
 					td 1212
 					td new Date();
 					td 10kb
 					td Comentarios y otros lalala
-					td input(type = "checkbox")
+					td
+						input(type = "radio", form="tabformv", value="2",name="rad")

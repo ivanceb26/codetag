@@ -2,13 +2,15 @@ extends layout
 
 block head  
 	title DVM - Sign Up Form
-
+	link(href="./css/pagelayout.css", rel="stylesheet" , media="screen")
 block content  
-	.formcontent
+	.formcontentlogin
 		form(method='post',action='')
-			label(for='user') *User:
-			input(type='text',name='user',id='user')      
-			label(for='pass') *Password:
-			input(type='password',name='pass',id='pass')
-			
-			input(type='submit',name='submit',value='Submit').submit-button
+			.formgroup
+				label(for='user') *User:
+				input.form-control(type='text',name='user',id='user')      
+			.formgroup
+				label(for='pass') *Password:
+				input.form-control(type='password',name='pass',id='pass')
+			.formgroup
+				input.btn.btn-info(type='button',name='submit',value='Submit',onClick="parent.location='/'").submit-button
