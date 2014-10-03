@@ -59,7 +59,7 @@ h2 {
   font-family: "Brush Script MT", cursive;
 }
 .rightp-titlebanner {
-  margin: 0px 0px 50px;
+  margin: 0px 0px 20px 0px;
 }
 .rightp-docinfo {
   overflow: auto;
@@ -86,8 +86,21 @@ h2 {
   text-align: center;
 }
 .formcontentlogin .formgroup input {
-  max-width: 100px;
+  max-width: 150px;
+  min-width: 100px;
+}
+.formcontentlogin .formgroup .sendbtn input {
+  max-width: 120px;
+  min-width: 80px;
 }
 .formcontentlogin .formgroup {
   margin: 10px;
+}
+.loginlayout {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: 40%;
+  margin-right: 40%;
+  background: #808080;
 }

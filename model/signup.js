@@ -1,0 +1,5 @@
+var registrar = function(){
+
+
+	
+}
