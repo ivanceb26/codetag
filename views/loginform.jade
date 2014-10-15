@@ -1,20 +1,29 @@
-extends layout
+extends page2
 
 block head  
-	title DVM - Sign Up Form
+	title DVM - Log In Form
 	link(href="./css/pagelayout.css", rel="stylesheet" , media="screen")
 block content
+	.TitleSuperHead
+		h2#supertitl DVM - Document Version Manager
+
+
 	.loginlayout
 		.formcontentlogin
-			form(method='post',action='')
+			form(method='post',action='/login', role='form')
 				.formgroup
 					label(for='user') *User:
-					input.form-control(type='text',name='user',id='user')      
+					input.form-control(type='text',name='user')      
 				.formgroup
 					label(for='pass') *Password:
-					input.form-control(type='password',name='pass',id='pass')
+					input.form-control(type='password',name='pass')
 				.formgroup.sendbtn
-					input.btn.btn-info(type='button',name='submit',value='Submit',onClick="parent.location='/'").submit-button
+					input.btn.btn-info(type='submit',name='submit',value='Submit').submit-button
+					br
+
 
 		.loginreg
 			button(class="btn btn-link", type="button", onClick="parent.location='/signup'") Sign Up
+			br
+
+		h7!=message

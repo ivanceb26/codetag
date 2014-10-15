@@ -10,6 +10,8 @@ var schema = new mongoose.Schema({
 	email: 'string'
 });
 
+
+
 //var User = function(){};
 //User.prototype.model = mongoose.model('User', schema);
 var User = mongoose.model('User', schema);
@@ -33,79 +35,58 @@ User.prototype.insertUser = function(idd,nam,us,pass,mail){
 User.prototype.deleteUser = function(nam){
 	//var us = User;
 	var us = User;
-	us.remove({ user: user }, function (err) {
-  		if (err){ 
-  			console.log("delete us error \n");
-  			return handleError(err);
-  		}
-  		else console.log("deleted us ok \n");
+	return us.remove({ user: user }, function (err) {
+		if (err){ 
+			console.log("delete us error \n");
+			return handleError(err);
+		}
+		else console.log("deleted us ok \n");
   	// removed!
-	});
+  });
 }
 
 
 User.prototype.findById = function(idd) {
 	var usr = User;
-	usr.find({id:idd}, function(err, usru) {
-		if(!err) {
-			//console.log(usru);
-			return usru;
-		} else {
-			console.log('ERROR: ' + err);
-		}
-	});
+	return usr.find({id:idd}).exec();
 };
 
 
-User.prototype.findByUser = function(titl) {
+User.prototype.findByUser = function(us) {
 	var usr = User;
-	usr.find({user:titl}, function(err, usru) {
-		if(!err) {
-			//console.log(usru);
-			return usru;
-		} else {
-			console.log('ERROR: ' + err);
-		}
-	});
+	var result = usr.findOne({user: us}).exec();
+	
+	return result;
 };
 
 
 
 User.prototype.findAll = function() {
 	var usr = User;
-	usr.find(function(err, usru) {
-		if(!err) {
-			//console.log(usru);
-			return usru;
-		} else {
-			console.log('ERROR: ' + err);
-		}
-	});
+	return usr.find().exec();
 };
 
 User.prototype.nextID = function() {
-	var next=0;
+	var next;
 	var obj;
 	var usr = User;
-	usr.find(function(err, usru) {
-		if(!err) {
-			if(usru.length<1) return 0; //por si la base de datos est'a en blanco
-			console.log(usru);
-			obj=usru;
+	var query = usr.find().exec();
+	var count =0;
+	query.then(function(qusers){	
+		if(quser.size<1) {//por si la base de datos est'a en blanco
+			next=0;
+		return 0;
+		}
+		else{
+			qusers.forEach(function(quser){
 
-			next=obj[0].id;
-			for (var i = obj.length - 1; i >= 0; i--) {
-				if(next<=obj[i].id){
-					next=obj[i].id+1;
-				}
-			};
+				count++;
+				next=count;
+			});
 
-		} else {
-			console.log('ERROR: ' + err);
 		}
 	});
 
-	
 	return next;
 };
 

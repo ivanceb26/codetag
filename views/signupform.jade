@@ -4,30 +4,37 @@ block head
 	title DVM - Sign Up Form
 	link(href="./css/pagelayout.css", rel="stylesheet" , media="screen")
 
-block content  
-	.formcontent
-		form(method='post',action='/signup', role="form", class="form-horizontal")
-			.formgroup
-				label.col-sm-2.control-label.col-sm-2.control-label(for='name') *Name:
-				.col-sm-10
-					input(type='text',name='name')
-			.formgroup   
-				label.col-sm-2.control-label(for='email') *Email:
-				.col-sm-10
-					input(type='text',name='email')
-			.formgroup
-				label.col-sm-2.control-label(for='user') *User:
-				.col-sm-10
-					input(type='text',name='user')      
-			.formgroup
-				label.col-sm-2.control-label(for='pass') *Password:
-				.col-sm-10
-					input(type='password',name='pass')
-			.formgroup
-				label.col-sm-2.control-label(for='repass') *Re-Password:
-				.col-sm-10
-					input(type='password',name='repass')
-			.formgroup
-				.col-sm-offset-2.col-sm-10
-					input.btn.btn-warning(type='submit',name='submit',value='Submit').submit-button
+block content
+	.TitleSuperHead
+		h2#supertitl DVM - Document Version Manager
+		h3 Sign Up
+
+	.signuplayout
+		.formcontent
+			form(method='post',action='/signup', role="form", class="form-horizontal")
+				.formgroup
+					label.col-sm-4.control-label(for='name') *Name:
+					.col-sm-8
+						input(type='text',name='name')
+				.formgroup   
+					label.col-sm-4.control-label(for='email') *Email:
+					.col-sm-8
+						input(type='text',name='email')
+				.formgroup
+					label.col-sm-4.control-label(for='user') *User:
+					.col-sm-8
+						input(type='text',name='user')      
+				.formgroup
+					label.col-sm-4.control-label(for='pass') *Password:
+					.col-sm-8
+						input(type='password',name='pass')
+				.formgroup
+					label.col-sm-4.control-label(for='repass') *Re-Password:
+					.col-sm-8
+						input(type='password',name='repass')
+				.formgroup
+					.col-sm-offset-4.col-sm-8
+						input.btn.btn-warning(type='submit',name='submit',value='Submit').submit-button
+				h7!=message
+
 		

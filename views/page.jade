@@ -11,7 +11,7 @@ block content
 		.leftp
 		
 			.leftp-1
-				button(class="btn btn-lrg btn-primary" ,type="button") +Upload
+				button(class="btn btn-lrg btn-primary" ,type="button",data-toggle="modal", data-target="#myModal") +Upload
 				block leftp-1
 				
 			.leftp-2
@@ -24,8 +24,8 @@ block content
 
 			.rigtp-menu
 				button(class="btn btn-link", type="button", onClick="parent.location='/'") Home
-				button(class="btn btn-link", type="button", onClick="parent.location='/login'") Login
-				//button(class="btn btn-link", type="button", onClick="parent.location='/'") Sign Up
+				//button(class="btn btn-link", type="button", onClick="parent.location='/login'") Login
+				button(class="btn btn-link", type="button", onClick="parent.location='/logout'") Logout
 
 				block rightp-menu
 
@@ -41,5 +41,36 @@ block content
 					|Los autores del sitio, no se responsabilizan 
 					|por el contenido o el manejo indebido de este,
 					|pues es dicha responsabilidad es de los usuarios.
+
+
+	.modalupload
+		.modal.fade( id="myModal",tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
+			.modal-dialog.modal-sm
+				.modal-content
+					.modal-header
+						button(class="close", type="button", data-dismiss="modal")
+							span(aria-hidden="true")
+								|&times
+							span.sr-only 
+								|Close
+						h3 Upload+
+					.modal-body
+						.formcontentlogin
+							form(method='post',action='/login', role='form', name='formm')
+								.formgroup
+									label(for='titleu') *Title:
+								.formgroup
+									input.form-control(type='text',name='titleu')      
+								.formgroup
+									label(for='commentu') *Comments:
+								.formgroup
+									textarea(name="commentu", cols="25",rows="3")
+								.formgroup
+									input(type="file",name="docsla", value="select File")
+
+					.modal-footer
+						button(class="btn btn-default" ,type="button",data-dismiss="modal") Close
+						button(class="btn btn-primary" ,type="submit",value='Submit',form='formm') Upload
+						h7!=message
 
 

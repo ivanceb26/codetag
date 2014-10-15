@@ -10,12 +10,13 @@ var schema = new mongoose.Schema({
 	comment: 'string',
 	date: 'date',
 	owner: 'string',
+	path: 'string',
 	head:'boolean'
 });
 
 var Documents = mongoose.model('documents',schema);
 
-Documents.prototype.insertDocument = function(i,idori,titl,versio,commen,dat,own,hea){
+Documents.prototype.insertDocument = function(i,idori,titl,versio,commen,dat,own,pathh,hea){
 	var newdoc = new Documents({
 		id: i,
 		idorigin: idori,
@@ -24,6 +25,7 @@ Documents.prototype.insertDocument = function(i,idori,titl,versio,commen,dat,own
 		comment: commen,
 		date: dat,
 		owner: own,
+		path: pathh,
 		head:hea  
 	});
 
@@ -47,51 +49,22 @@ Documents.prototype.deleteDocument = function(idd){
 
 Documents.prototype.findById = function(idd) {
 	var doc = Documents;
-	doc.find({id:idd}, function(err, docu) {
-		if(!err) {
-			console.log(docu);
-			return docu;
-		} else {
-			console.log('ERROR: ' + err);
-		}
-	});
+	return doc.find({id:idd}).exec();
 };
-
 
 Documents.prototype.findByTitle = function(titl) {
 	var doc = Documents;
-	doc.find({title:titl}, function(err, docu) {
-		if(!err) {
-			console.log(docu);
-			return docu;
-		} else {
-			console.log('ERROR: ' + err);
-		}
-	});
+	return doc.find({title:titl}).exec();
 };
 
 Documents.prototype.findByIdOrigin = function(idd) {
 	var doc = Documents;
-	doc.find({idorigin:idd}, function(err, docu) {
-		if(!err) {
-			console.log(docu);
-			return docu;
-		} else {
-			console.log('ERROR: ' + err);
-		}
-	});
+	return doc.find({idorigin:idd}).exec();
 };
 
 Documents.prototype.findAll = function() {
 	var doc = Documents;
-	doc.find(function(err, docu) {
-		if(!err) {
-			console.log(docu);
-			return docu;
-		} else {
-			console.log('ERROR: ' + err);
-		}
-	});
+	return doc.find().exec();
 };
 
 module.exports = Documents;

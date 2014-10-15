@@ -1,40 +1,37 @@
 var express = require('express');
 var router = express.Router();
 
+
+
+function auth(route,req, res){
+    if (req.session.user) {
+        res.render(route);
+    } else {
+        res.redirect('/login');
+    }
+
+}
+
 /* GET home page. */
 router.get('/versions', function(req, res){
-  var fileName = "versions.jade";
-    
-  res.render(fileName);
-  //res.render(fileName);
+  auth("versions.jade",req,res);
         
 });
 
 router.get('/', function(req, res){
-  var fileName = "home.jade";
-    
-  res.render(fileName);
-  //res.render(fileName);
-        
+  auth("home.jade",req,res);
 });
+
 router.get('/login', function(req, res){
-  var fileName = "loginform.jade";
-    
-  res.render(fileName);
-  //res.render(fileName);
-        
+  if (req.session.user) res.redirect('/');
+  else  res.render("loginform.jade");
+
 });
 
-router.get('/signup', function(req, res){
-  var fileName = "signupform.jade";
-    
-  res.render(fileName);
-  //res.render(fileName);
-        
+router.get('/signup', function(req, res){    
+  if (req.session.user)res.redirect('/');
+  else res.render("signupform.jade");
 });
-
-
-
 
 router.get('/bootstrap/?', function(req, res){
   var fileName = "";
@@ -43,42 +40,42 @@ router.get('/bootstrap/?', function(req, res){
         
 });
 
-
-
-router.get('/images/1', function(req, res){
-  var fileName = "1.png";
-    
-  res.sendfile('./public/images/'+fileName);
-        
+router.get('/logout', function (req, res) {
+    req.session.destroy(function () {
+        res.redirect('/');
+    });
 });
 
-router.get('/images/2', function(req, res){
-  var fileName = "2.png";
-    
-  res.sendfile('./public/images/'+fileName);
-        
-});
 
-router.get('/images/3', function(req, res){
-  var fileName = "3.png";
-    
-  res.sendfile('./public/images/'+fileName);
-        
-});
 
-router.get('/images/4', function(req, res){
-  var fileName = "4.png";
-    
-  res.sendfile('./public/images/'+fileName);
-        
-});
 
-router.get('/images/5', function(req, res){
-  var fileName = "5.png";
-    
-  res.sendfile('./public/images/'+fileName);
-        
-});
+
+///////******IMAGE PREVIEWS************///////
+
+// router.get('/images/1', function(req, res){
+//   var fileName = "1.png";  
+//   res.sendfile('./public/images/'+fileName);
+// });
+
+// router.get('/images/2', function(req, res){
+//   var fileName = "2.png";
+//   res.sendfile('./public/images/'+fileName);
+// });
+
+// router.get('/images/3', function(req, res){
+//   var fileName = "3.png";
+//   res.sendfile('./public/images/'+fileName);
+// });
+
+// router.get('/images/4', function(req, res){
+//   var fileName = "4.png";
+//   res.sendfile('./public/images/'+fileName);
+// });
+
+// router.get('/images/5', function(req, res){
+//   var fileName = "5.png";
+//   res.sendfile('./public/images/'+fileName);
+// });
 
 
 module.exports = router;
