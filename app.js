@@ -185,13 +185,17 @@ function userExistSession(req, res, next) {
 
 //user.insertUser('ivan ceballos','nw','lalala','123@123.com');
 //user.findAll();
-//documents.insertDocument('2','1','titulo1','3','lalalala',new Date(),'usuario1',true);
+
+// documents.insertDocument('2','1','undoc.doc','2','comments text','userown','dropbox',true);
+// documents.insertDocument('1','1','undoc.doc','1','comments text','userown','dropbox',true);
+// documents.insertDocument('5','5','title','1','comments text','userown','dropbox',true);
+// documents.insertDocument('9','5','title','2','comments text','userown','dropbox',true);
+// documents.insertDocument('6','6','esteesotro.odt','1','comments text','userown','dropbox',true);
+// documents.insertDocument('3','1','undoc.doc','3','comments text','userown','dropbox',true);
+// documents.insertDocument('8','4','otrodoc.xls','2','comments text','userown','dropbox',true);
+// documents.insertDocument('4','4','otrodoc.xls','1','comments text','userown','dropbox',true);
+
 // documents.deleteDocument('titulo1');
-//documents.findById(1);
-//documents.findById(1);
-//documents.findByTitle("titulo1");
-//documents.findByIdOrigin(1);
-//documents.findAll();
 //user.deleteUser('ivan ceballos');
 
 
@@ -216,16 +220,17 @@ app.post('/login', function(req, res){
 
         req.session.user = user;
         req.session.success = 'Authenticated as ' + user.username + ' click to <a href="/logout">logout</a>. ' + ' You may now access <a href="/restricted">/restricted</a>.';
-        client.authDriver(new Dropbox.AuthDriver.NodeServer(3000));
+        //client.authDriver(new Dropbox.AuthDriver.NodeServer(3000));
 
-        client.authenticate(function(error, client) {
-          if (error) {
-            return showError(error);
-          }
-        });
+        // client.authenticate(function(error, client) {
+        //   if (error) {
+        //     return showError(error);
+        //   }
+        // });
         res.redirect('/');
       });
-    } else {
+    }
+    else {
       req.session.error = 'Authentication failed, please check your ' + ' username and password.';
       res.redirect('/login');
     }
@@ -236,6 +241,55 @@ app.post('/login', function(req, res){
 
 
 app.post('/signup', function(req, res){
+
+
+  var error = false;
+
+  var dat={};
+  dat[0] = req.body.titleu;
+  dat[1] = req.body.commentu;
+
+  dat[3] = req.body.pass;
+  dat[4] = req.body.repass;
+
+
+  if(dat[0].length<3 || dat[0].lenght>18  ){
+    error = true;
+    req.session.error = "name length error, name length recomended is between 4 and 17 characters";
+    res.redirect("/signup");
+  }else if(!emailValidate(dat[1]) ){
+    error = true;
+    req.session.error = "Email format error ";
+    res.redirect("/signup");
+  }else if(dat[3].length<8 || dat[0].length>18  ){
+    error = true;
+    req.session.error = "pass length error, name lenght recomended is between 8 and 17 characters";
+    res.redirect("/signup");
+
+  }else if(dat[3]!=dat[4] ){
+    error = true;
+    req.session.error = "passwords no match";
+    res.redirect("/signup");
+
+  }else if (!error) {
+    User.count({
+        user: dat[2]
+    }, function (err, count) {
+        if (!(count === 0)) {
+            error = true;
+            req.session.error = "User exist in our database, please, input other user name or sigin";
+            res.redirect("/signup");
+        } else{
+          //userM.insertUser(userM.nextID(),dat[0],dat[2],dat[3],dat[1]);
+          res.send("Register Success");
+        }
+    });
+  };
+ 
+
+});
+
+app.post('/upload', function(req, res){
 
 
   var error = false;
@@ -283,8 +337,6 @@ app.post('/signup', function(req, res){
  
 
 });
-
-
 
 
 

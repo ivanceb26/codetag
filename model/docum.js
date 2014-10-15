@@ -16,14 +16,17 @@ var schema = new mongoose.Schema({
 
 var Documents = mongoose.model('documents',schema);
 
-Documents.prototype.insertDocument = function(i,idori,titl,versio,commen,dat,own,pathh,hea){
+Documents.prototype.insertDocument = function(i,idori,titl,versio,commen,own,pathh,hea){
+	var now = new Date();
+	var jsonDate = now.toJSON();
+
 	var newdoc = new Documents({
 		id: i,
 		idorigin: idori,
 		title: titl,
 		version: versio,
 		comment: commen,
-		date: dat,
+		date: jsonDate,
 		owner: own,
 		path: pathh,
 		head:hea  

@@ -23,12 +23,16 @@ block rightp-table
 					th
 					th
 			tbody
-				//each post, i in userPosts
+				//each post, i in userPo
+				//- each item in rows
+				//- 	tr
+				//- 		td= item.firstName
+				//- 		td= item.lastName
 				tr
 					td 1111 
 					td 1212
 					td doc1.docx
-					td new Date();
+					td date;
 					td(align="center") 5
 					td 
 						button(class="btn btn-warning btn-versions", type="button", onClick="parent.location='/versions'") versions
@@ -38,7 +42,7 @@ block rightp-table
 					td 1111 
 					td 1212
 					td doc1.docx
-					td new Date();
+					td date;
 					td(align="center") 5
 					td 
 						button(class="btn btn-warning btn-versions", type="button", onClick="parent.location='/versions'") versions
@@ -49,7 +53,7 @@ block rightp-table
 					td 1111 
 					td 1212
 					td doc1.docx
-					td new Date();
+					td date;
 					td(align="center") 5
 					td 
 						button(class="btn btn-warning btn-versions", type="button", onClick="parent.location='/versions'") versions
